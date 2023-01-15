@@ -1,0 +1,18 @@
+[
+    /*
+        template: {title: "", dir: "", parameter: "", time: "year(4)/month(2)/day(2) hour(2)/minute(2)"}
+        example: {
+            "title": "test",
+            "dir": "test.json(sources/を書く必要はありません)"
+            "parameter": "リンク(ドメイン/post/parameter)",
+            "time": "2023/01/01 00:00",
+            "description": "ここにその記事の説明"
+        }
+    */
+    {
+        "title": "test",
+        "parameter": "test",
+        "time": "2023/01/01 00:00",
+        "description": "Hello, It is a test."
+    }
+]
