@@ -68,15 +68,23 @@ class App extends Resource {
         if (this.InstantDB == (null || undefined || "")) return console.error("couldn't requestView: null of this.InstantDB");
 
         // post
-        if (location.pathname.startsWith("posts")) {
+        if (location.pathname.startsWith("post")) {
+            var check = false;
             this.InstantDB.posts.forEach(data => {
                 if (data.parameter == location.pathname.split("/")[1]) {
+                    check = true;
+                    fetch(`/posts/sources/${data.parameter}`)
+                        .then(res => res.text)
+
                 }
             })
+            if (!(check)) {
+                console.error("[App] 404 Error: Not Found Page");
+            }
         } else if (typeof location.pathname == "number") {
             this.InstantDB.posts.slice(9)
         } else {
-            
+
         }
 
         // Rewrite SpaceArg
