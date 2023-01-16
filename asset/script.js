@@ -12,12 +12,15 @@ const config = {
     //     "paged": "%pagedNumber%",
     //     "page": "%parameter%"
     // },
-    "maxPosts": 9
+    "maxPosts": 9,
+    "template": {
+        "posts": `<div class></div>`
+    }
 }
 
 /**
  * main script for create website.
- * @author "github.com/Nobody-Harun"
+ * @author github/@Nobody-Harun
  */
 
 /**
