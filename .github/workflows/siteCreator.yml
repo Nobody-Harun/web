@@ -24,8 +24,7 @@ jobs:
       - name: Install Dependencies from /package.json
         run: npm install
       - name: run "npm build"
-        run: |
-          npm build
+        run: npm build
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/main' }}
