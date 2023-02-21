@@ -1,0 +1,16 @@
+{
+    "name": "sitecreater",
+    "version": "1.0.0",
+    "description": "for github",
+    "main": "runner.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "build": "node ./runner.js" 
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "js-yaml": "^4.1.0"
+    }
+  }
+  

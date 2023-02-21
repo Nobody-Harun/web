@@ -1,0 +1,34 @@
+name: Site Creator for Github Pages
+
+concurrency: production
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "articles/**.md"
+
+jobs:
+  tasks:
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - uses: actions/checkout@v3.3.0
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
+      - uses: actions/setup-node@v3.6.0
+        with:
+          node-version: 18
+      - name: Install Dependencies from /package.json
+        run: npm install
+      - name: run "npm build"
+        run: |
+          npm build
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/main' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
