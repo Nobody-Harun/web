@@ -5,7 +5,7 @@ concurrency: production
 on:
   push:
     branches:
-      - [$default-branch]
+      - main
     paths:
       - "articles/**"
       - "config/**"
