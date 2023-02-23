@@ -4,6 +4,8 @@ const { marked } = require("./config/lib/md-reader.js");
 
 const config = JSON.parse(fs.readFileSync("./config/config.json", {encoding: 'utf-8'}));
 
+
+
 // ファイルタイプの列挙体（のつもり）
 const FileType = {
     File: 'file',

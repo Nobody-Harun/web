@@ -17,8 +17,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3.3.0
-      - name: Setup Pages
-        uses: actions/configure-pages@v2
       - uses: actions/setup-node@v3.6.0
         with:
           node-version: 18
