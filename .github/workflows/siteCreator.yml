@@ -5,7 +5,7 @@ concurrency: production
 on:
   push:
     paths:
-      - "articles/**"
+      - "pages/**"
       - "config/**"
 
 permissions:
