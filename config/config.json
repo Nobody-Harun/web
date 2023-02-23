@@ -1,0 +1,7 @@
+{
+    "title": "",
+    "design": {
+        "header": "templates/header.html",
+        "footer": "templates/footer.html"
+    }
+}

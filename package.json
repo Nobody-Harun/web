@@ -1,16 +1,16 @@
 {
-    "name": "sitecreater",
-    "version": "1.0.0",
-    "description": "for github",
-    "main": "runner.js",
-    "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1",
-      "build": "node ./runner.js" 
-    },
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-      "js-yaml": "^4.1.0"
-    }
+  "name": "sitecreater",
+  "version": "1.0.0",
+  "description": "for github",
+  "main": "runner.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node ./runner.js" 
+  },
+  "author": "半透明のLocaler#5455",
+  "license": "ISC",
+  "dependencies": {
+    "js-yaml": "^4.1.0",
+    "marked": "4.0"
   }
-  
+}

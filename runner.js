@@ -1,6 +1,8 @@
 const path = require('path');
 const fs = require('fs');
-const yaml = require('js-yaml');
+const { marked } = require("./config/lib/md-reader.js");
+
+const config = JSON.parse(fs.readFileSync("./config/config.json", {encoding: 'utf-8'}));
 
 // ファイルタイプの列挙体（のつもり）
 const FileType = {
@@ -69,7 +71,9 @@ const list = listFiles(dirPath);
 let mapData = [];
 
 list.forEach(d => {
-    const markdown = fs.readFileSync(d, {encoding: 'utf-8'});
+    const markdown = fs.readFileSync(d, {
+        encoding: 'utf-8'
+    });
     const stats = fs.statSync(d);
     d = d.replace("/home/runner/work/community_post/community_post/content/", "");
     d = d.replace(".md", "");
