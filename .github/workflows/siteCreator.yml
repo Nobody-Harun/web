@@ -5,10 +5,15 @@ concurrency: production
 on:
   push:
     branches:
-      - main
+      - [$default-branch]
     paths:
       - "articles/**"
       - "config/**"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   tasks:

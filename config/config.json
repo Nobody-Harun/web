@@ -1,7 +1,13 @@
 {
-    "title": "",
+    "title": "Test",
+    "lang": "ja",
     "design": {
-        "header": "templates/header.html",
-        "footer": "templates/footer.html"
+        "template": "templates/index.html",
+        "menu": [
+            ["Home", "/"],
+            ["About", "/About"],
+            ["Blog", "/articles"]
+        ],
+        "icon": "templates/images/icon.png"
     }
 }
