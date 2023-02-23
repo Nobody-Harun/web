@@ -4,8 +4,6 @@ concurrency: production
 
 on:
   push:
-    branches:
-      - main
     paths:
       - "articles/**"
       - "config/**"
