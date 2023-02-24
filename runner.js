@@ -33,7 +33,7 @@ try {
                 ["description", data.meta.description],
                 ["content", data.content]
             ].forEach(q => {
-                cache = cache.replace(`%${q[2]}%`, q[1]);
+                cache = cache.replace(`%${q[0]}%`, q[1]);
             })
 
             fs.mkdirSync(`public/${name}`);
