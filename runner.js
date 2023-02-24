@@ -38,6 +38,7 @@ try {
 
             fs.mkdirSync(`public/${name}`);
             // get file name exclude: extension name
+            console.log(cache);
             fs.writeFileSync(`public/${name}/index.html`, cache);
         })
 

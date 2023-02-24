@@ -28,9 +28,7 @@ jobs:
       - name: Install Dependencies from /package.json
         run: npm install
       - name: run "npm build"
-        run: |
-          npm run build
-          ls
+        run: npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
