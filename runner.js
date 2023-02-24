@@ -36,10 +36,13 @@ try {
                 cache = cache.replace(`%${q[0]}%`, q[1]);
             })
 
-            fs.mkdirSync(`public/${name}`);
-            // get file name exclude: extension name
-            console.log(typeof cache);
-            fs.writeFileSync(`public/${name}/index.html`, cache);
+            if (name == "index") {
+                fs.writeFileSync(`public/index.html`, `$cache`);
+            } else {
+                fs.mkdirSync(`public/${name}`);
+                // get file name exclude: extension name
+                fs.writeFileSync(`public/${name}/index.html`, `$cache`);
+            }
         })
 
 } catch(e) {
