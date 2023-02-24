@@ -13,6 +13,7 @@ try {
         .filter(dirent => dirent.isFile()).map(({name}) => name)
         .filter(file => file.toLowerCase().endsWith(".md"))
         .forEach(page => {
+            console.log(page);
             const name = page.split("/")[page.split("/").length - 1].substring(0, page.split("/")[page.split("/").length - 1].length - 3);
             if (name == "articles") throw new Error("You must not use name: Articles");
             const data = marked.markup(fs.readFileSync(page, {encoding: 'utf-8'}));

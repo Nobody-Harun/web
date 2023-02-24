@@ -3,10 +3,10 @@ name: Site Creator for Github Pages
 concurrency: production
 
 on:
-  push:
-    paths:
-      - "pages/**"
-      - "config/**"
+  [push]
+    # paths:
+    #  - "pages/**"
+    #  - "config/**"
 
 permissions:
   contents: read
