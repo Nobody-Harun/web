@@ -7,8 +7,6 @@ const yaml = require('js-yaml');
 exports.marked = {
     /**
      * Markdown => HTML
-     * @param {String} md
-     * @return {Object}
      */
     "markup": (md) => {
         return {

@@ -1,6 +1,8 @@
 try {
     const path = require('path');
     const fs = require('fs');
+    const marked = require('marked');
+    const yaml = require('js-yaml');
     const { marked } = require("./config/lib/md-reader.js");
 
     const config = JSON.parse(fs.readFileSync("./config/config.json", {encoding: 'utf-8'}));
