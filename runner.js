@@ -37,11 +37,11 @@ try {
             })
 
             if (name == "index") {
-                fs.writeFileSync(`public/index.html`, `$cache`);
+                fs.writeFileSync(`public/index.html`, `${cache}`);
             } else {
                 fs.mkdirSync(`public/${name}`);
                 // get file name exclude: extension name
-                fs.writeFileSync(`public/${name}/index.html`, `$cache`);
+                fs.writeFileSync(`public/${name}/index.html`, `${cache}`);
             }
         })
 
