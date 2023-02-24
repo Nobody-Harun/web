@@ -3,7 +3,6 @@ try {
     const fs = require('fs');
     const marked = require('marked');
     const yaml = require('js-yaml');
-    const { marked } = require("./config/lib/md-reader.js");
 
     const config = JSON.parse(fs.readFileSync("./config/config.json", {encoding: 'utf-8'}));
 
@@ -18,7 +17,13 @@ try {
             console.log(page);
             const name = page.split("/")[page.split("/").length - 1].substring(0, page.split("/")[page.split("/").length - 1].length - 3);
             if (name == "articles") throw new Error("You must not use name: Articles");
-            const data = marked.markup(fs.readFileSync(`./pages/${page}`, {encoding: 'utf-8'}));
+
+            const md = fs.readFileSync(`./pages/${page}`, {encoding: 'utf-8'});
+
+            const data = {
+                "content": marked.parse(md.substring(md.match(/^---[\s\S]*?---/)[0].length)),
+                "meta": yaml.load(md.match(/^---[\s\S]*?---/)[0].substring(3, md.match(/^---[\s\S]*?---/)[0].length - 3))
+            }
 
             let cache = template;
 
