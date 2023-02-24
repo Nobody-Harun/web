@@ -16,7 +16,7 @@ try {
             console.log(page);
             const name = page.split("/")[page.split("/").length - 1].substring(0, page.split("/")[page.split("/").length - 1].length - 3);
             if (name == "articles") throw new Error("You must not use name: Articles");
-            const data = marked.markup(fs.readFileSync(page, {encoding: 'utf-8'}));
+            const data = marked.markup(fs.readFileSync(`./pages/${page}`, {encoding: 'utf-8'}));
 
             let cache = template;
 
