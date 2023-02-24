@@ -5,7 +5,7 @@ try {
 
     const config = JSON.parse(fs.readFileSync("./config/config.json", {encoding: 'utf-8'}));
 
-    const template = fs.readFileSync(config.design.template, {encoding: 'utf-8'});
+    const template = fs.readFileSync(`./config/${config.design.template}`, {encoding: 'utf-8'});
 
     fs.mkdirSync("public");
 
