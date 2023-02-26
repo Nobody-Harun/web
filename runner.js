@@ -8,8 +8,10 @@ try {
 
     const template = fs.readFileSync(`./config/${config.design.template}`, {encoding: 'utf-8'});
 
+    // Github Pages / [Create] Path: ./public
     fs.mkdirSync("public");
 
+    //#region MainPages
     fs.readdirSync("./pages", {withFileTypes: true})
         .filter(dirent => dirent.isFile()).map(({name}) => name)
         .filter(file => file.toLowerCase().endsWith(".md"))
@@ -44,6 +46,41 @@ try {
                 fs.writeFileSync(`public/${name}/index.html`, `${cache}`);
             }
         })
+    //#endregion MainPages
+
+    //#region Articles
+    fs.mkdirSync(`public/articles`);
+
+    let list = fs.readdirSync("./pages/articles")
+        .filter(dirent => dirent.isFile()).map(({name}) => name)
+        .filter(file => file.toLowerCase().endsWith(".md"))
+        .map(filename => {
+            const md = fs.readFileSync(`./pages/articles/${page}`, {encoding: 'utf-8'});
+            const info = fs.statSync(`./pages/articles/${filename}`);
+            return {
+              "filename": filename,
+              "timestamp": info.birthtime,
+              "updated": info.ctime,
+              "meta": yaml.load(md.match(/^---[\s\S]*?---/)[0].substring(3, md.match(/^---[\s\S]*?---/)[0].length - 3))
+            }
+        });
+
+    list.sort((a, b) => b.timestamp - a.timestamp);
+
+    list.forEach((q, index) => {
+        const page = q.filename;
+        const name = page.split("/")[page.split("/").length - 1].substring(0, page.split("/")[page.split("/").length - 1].length - 3);
+
+        const md = fs.readFileSync(`./pages/articles/${page}`, {encoding: 'utf-8'});
+
+        const data = {
+            "content": marked.parse(md.substring(md.match(/^---[\s\S]*?---/)[0].length)),
+            "meta": yaml.load(md.match(/^---[\s\S]*?---/)[0].substring(3, md.match(/^---[\s\S]*?---/)[0].length - 3))
+        }
+
+        fs.writeFileSync(`public/index.html`, `${cache}`);        
+    })
+    //#endregion Articles
 
 } catch(e) {
     console.error(e);
