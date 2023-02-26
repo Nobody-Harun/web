@@ -51,7 +51,7 @@ try {
     //#region Articles
     fs.mkdirSync(`public/articles`);
 
-    let list = fs.readdirSync("./pages/articles")
+    let list = fs.readdirSync("./pages/articles", {withFileTypes: true})
         .filter(dirent => dirent.isFile()).map(({name}) => name)
         .filter(file => file.toLowerCase().endsWith(".md"))
         .map(filename => {
