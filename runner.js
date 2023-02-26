@@ -55,7 +55,7 @@ try {
         .filter(dirent => dirent.isFile()).map(({name}) => name)
         .filter(file => file.toLowerCase().endsWith(".md"))
         .map(filename => {
-            const md = fs.readFileSync(`./pages/articles/${page}`, {encoding: 'utf-8'});
+            const md = fs.readFileSync(`./pages/articles/${filename}`, {encoding: 'utf-8'});
             const info = fs.statSync(`./pages/articles/${filename}`);
             return {
               "filename": filename,
