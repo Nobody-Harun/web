@@ -74,8 +74,8 @@ try {
         const md = fs.readFileSync(`./pages/articles/${page}`, {encoding: 'utf-8'});
         
         const data = {
-            "content": q.meta,
-            "meta": yaml.load(md.match(/^---[\s\S]*?---/)[0].substring(3, md.match(/^---[\s\S]*?---/)[0].length - 3))
+            "content": marked.parse(md.substring(md.match(/^---[\s\S]*?---/)[0].length)),
+            "meta": q.meta
         }
 
         let cache = template;
