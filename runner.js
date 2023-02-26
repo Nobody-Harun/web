@@ -72,14 +72,32 @@ try {
         const name = page.split("/")[page.split("/").length - 1].substring(0, page.split("/")[page.split("/").length - 1].length - 3);
 
         const md = fs.readFileSync(`./pages/articles/${page}`, {encoding: 'utf-8'});
-
+        
         const data = {
-            "content": marked.parse(md.substring(md.match(/^---[\s\S]*?---/)[0].length)),
+            "content": q.meta,
             "meta": yaml.load(md.match(/^---[\s\S]*?---/)[0].substring(3, md.match(/^---[\s\S]*?---/)[0].length - 3))
         }
 
-        fs.writeFileSync(`public/index.html`, `${cache}`);        
+        let cache = template;
+
+        [
+            ["title", `${data.meta.title} | ${config.title}`],
+            ["lang", config.lang],
+            ["description", data.meta.description],
+            ["content", data.content]
+        ].forEach(q => {
+            cache = cache.replace(`%${q[0]}%`, q[1]);
+        })
+
+        list[index].filename = name;
+
+        fs.mkdirSync(`public/articles/${name}`);
+        // get file name exclude: extension name
+        fs.writeFileSync(`public/articles/${name}/index.html`, `${cache}`);
     })
+    // Testing
+    fs.writeFileSync(`public/articles/index.html`, `${JSON.stringify(list)}`);
+
     //#endregion Articles
 
 } catch(e) {
